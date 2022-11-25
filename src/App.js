@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addData } from './actions';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import User from './components/User';
+import Main from './components/Main';
 
-function App() {
+const App = () => {
+  // const dispatch = useDispatch();
+  // // Selects the state value from the store.
+  // const tableData = useSelector((state) => state.data.todo);
+  // // const handleAddData = () => dispatch(addData());
+  // useEffect(() => {
+  //   dispatch(addData());
+  // }, []);
+  // // const handleDeleteData = () => dispatch(deleteData());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <button onClick={handleAddData}>Add Data</button> */}
+      {/* <button onClick={handleDeleteData}>Delete Data</button> */}
+
+      {/* {tableData && <div>{JSON.stringify(tableData)}</div>} */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/user/:userId" element={<User />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;
