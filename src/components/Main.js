@@ -7,38 +7,20 @@ import Loading from './Loading';
 const Main = () => {
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
-  //Selects the state value from the store.
   const tableData = useSelector((state) => state.data.posts);
-  //const handleAddData = () => dispatch(addData());
   useEffect(() => {
     dispatch(addData());
   }, []);
 
-  //const handleDeleteData = () => dispatch(deleteData());
+  useEffect(() => {
+    dispatch(filterData(input));
+  }, [input]);
 
-  // const [tableData, setTableData] = useState([]);
-  // useEffect(() => {
-  //   fetch('https://jsonplaceholder.typicode.com/posts')
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       setTableData(
-  //         data.concat({ userId: 10, id: 101, body: 'mustafa', title: 'rizwan' })
-  //       )
-  //     );
-  // }, []);
+  const filteredInfo = useSelector((state) => state.data.filterposts);
 
-  // const filteredInfo = tableData.filter((x) =>
-  //   ['title', 'body'].some((col) =>
-  //     x[col].toLowerCase().includes(input.toLowerCase())
-  //   )
-  // );
+  const handleOnChange = (event) => setInput(event.target.value);
 
-  console.log(tableData);
-  // console.log(filteredInfo);
-
-  const handleOnChange = (event) => {
-    setInput(event.target.value);
-  };
+  console.log('fi', filteredInfo);
 
   return (
     <>
@@ -54,11 +36,8 @@ const Main = () => {
           />
         </form>
       </div>
-      {/* {tableData && (
-        <div className="container">{JSON.stringify(tableData)}</div>
-      )} */}
       <Loading jsonObj={tableData}>
-        <Table jsonObj={tableData} />
+        <Table jsonObj={filteredInfo} />
       </Loading>
     </>
   );

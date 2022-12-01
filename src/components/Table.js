@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from './Row';
 
-export default function Table() {
+export default function Table({ jsonObj }) {
   return (
     <div className="container my-5 table-responsive">
       <table className="text-center table table-light table-sm table-bordered border-light table-striped table-hover">
@@ -14,7 +14,7 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          <Row />
+          <Row jsonObj={jsonObj} />
         </tbody>
       </table>
     </div>
