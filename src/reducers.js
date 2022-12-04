@@ -13,6 +13,8 @@ const dataReducer = (state = INITAL_STATE, action) => {
   switch (action.type) {
     case "ADD_DATA":
       return { ...state, posts: action.payload };
+    case "ADMIN_DATA":
+      return { ...state, admin: action.payload };
     case "USER_DATA":
       return { ...state, user: action.payload };
     case "EMPTY_DATA":
