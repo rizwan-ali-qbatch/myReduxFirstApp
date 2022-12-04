@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { adminData } from "../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
 // import { addData, filterData } from "../actions";
 // import Table from "./Table";
 // import Loading from "./Loading";
 
 const Admin = () => {
+  const admin_Data = useSelector((state) => state.data.admin);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(adminData());
@@ -16,6 +16,7 @@ const Admin = () => {
     <>
       <div className="container my-5 text-center">
         <h3>Admin</h3>
+        <p>{JSON.stringify(admin_Data)}</p>
       </div>
     </>
   );
