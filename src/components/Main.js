@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addData, filterData } from '../actions';
-import Table from './Table';
-import Loading from './Loading';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addData, filterData } from "../actions";
+import Table from "./Table";
+import Loading from "./Loading";
 
 const Main = () => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const tableData = useSelector((state) => state.data.posts);
   useEffect(() => {
     dispatch(addData());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(filterData(input));
-  }, [input]);
+  }, [dispatch, input]);
 
   const filteredInfo = useSelector((state) => state.data.filterposts);
 
   const handleOnChange = (event) => setInput(event.target.value);
 
-  console.log('fi', filteredInfo);
+  console.log("fi", filteredInfo);
 
   return (
     <>

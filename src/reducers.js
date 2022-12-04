@@ -1,29 +1,31 @@
-const { combineReducers } = require('redux');
+const { combineReducers } = require("redux");
 
 const INITAL_STATE = {
   posts: null,
-  input: '',
   filterposts: null,
+  admin: null,
+  filteradmin: null,
+  input: "",
   user: {},
 };
 
 const dataReducer = (state = INITAL_STATE, action) => {
   switch (action.type) {
-    case 'ADD_DATA':
+    case "ADD_DATA":
       return { ...state, posts: action.payload };
-    case 'USER_DATA':
+    case "USER_DATA":
       return { ...state, user: action.payload };
-    case 'EMPTY_DATA':
+    case "EMPTY_DATA":
       return { ...state, user: action.payload };
-    case 'FILTER_DATA':
+    case "FILTER_DATA":
       const filteredposts = !!state.posts
         ? state.posts.filter((x) =>
-            ['title', 'body'].some((col) =>
+            ["title", "body"].some((col) =>
               x[col].toLowerCase().includes(action.payload.toLowerCase())
             )
           )
         : [];
-      console.log('fp', filteredposts);
+      // console.log("fp", filteredposts);
       return { ...state, filterposts: filteredposts, input: action.payload };
     default:
       return state;

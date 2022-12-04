@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { emptyData } from '../actions';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { emptyData } from "../actions";
 
 export default function Loading(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(emptyData({}));
-  }, []);
+  }, [dispatch]);
 
   const obj = props.jsonObj;
 
