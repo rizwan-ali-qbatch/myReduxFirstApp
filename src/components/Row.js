@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-export default function Row(props) {
+export default function Row() {
   const rowsData = useSelector((state) =>
     !state.data.input ? state.data.posts : state.data.filterposts
   );
